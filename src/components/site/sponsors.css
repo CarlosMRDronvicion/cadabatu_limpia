@@ -1,0 +1,14 @@
+.sponsors {
+  display: flex;
+  width: max-content;
+  animation: scrollSponsors 80s linear infinite;
+}
+
+@keyframes scrollSponsors {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}

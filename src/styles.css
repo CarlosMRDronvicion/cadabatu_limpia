@@ -1,0 +1,175 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-hot: var(--hot);
+  --color-hot-foreground: var(--hot-foreground);
+  --color-sun: var(--sun);
+  --color-sun-foreground: var(--sun-foreground);
+  --color-jungle: var(--jungle);
+  --color-jungle-foreground: var(--jungle-foreground);
+  --font-display: "Bebas Neue", "Impact", system-ui, sans-serif;
+  --font-sans: "Inter", system-ui, sans-serif;
+  --animate-marquee: marquee 22s linear infinite;
+  --animate-pulse-glow: pulse-glow 2.6s ease-in-out infinite;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-shake: shake 0.6s ease-in-out infinite;
+
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 0 0 var(--glow-color); transform: scale(1); }
+    50% { box-shadow: 0 0 60px 12px var(--glow-color); transform: scale(1.03); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+  @keyframes shake {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-3deg); }
+    75% { transform: rotate(3deg); }
+  }
+}
+
+:root {
+  --radius: 0.875rem;
+
+  /* Carnival vibrant palette */
+  --background: oklch(0.14 0.02 30);
+  --foreground: oklch(0.98 0.01 90);
+
+  --card: oklch(0.18 0.025 30);
+  --card-foreground: oklch(0.98 0.01 90);
+  --popover: oklch(0.18 0.025 30);
+  --popover-foreground: oklch(0.98 0.01 90);
+
+  /* Primary = vivid carnival red */
+  --primary: oklch(0.62 0.24 25);
+  --primary-foreground: oklch(0.98 0.01 90);
+
+  /* Secondary = solar yellow */
+  --secondary: oklch(0.86 0.18 95);
+  --secondary-foreground: oklch(0.18 0.02 30);
+
+  --muted: oklch(0.24 0.02 30);
+  --muted-foreground: oklch(0.72 0.03 80);
+
+  /* Accent = jungle green */
+  --accent: oklch(0.68 0.18 145);
+  --accent-foreground: oklch(0.14 0.02 30);
+
+  --destructive: oklch(0.62 0.24 25);
+  --destructive-foreground: oklch(0.98 0.01 90);
+
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 14%);
+  --ring: oklch(0.86 0.18 95);
+
+  /* Custom carnival tokens */
+  --hot: oklch(0.66 0.26 35);
+  --hot-foreground: oklch(0.98 0.01 90);
+  --sun: oklch(0.86 0.18 95);
+  --sun-foreground: oklch(0.18 0.02 30);
+  --jungle: oklch(0.62 0.18 145);
+  --jungle-foreground: oklch(0.14 0.02 30);
+
+  /* Gradients */
+  --gradient-carnival: linear-gradient(135deg, oklch(0.62 0.24 25) 0%, oklch(0.78 0.2 55) 50%, oklch(0.86 0.18 95) 100%);
+  --gradient-night: linear-gradient(180deg, oklch(0.14 0.02 30) 0%, oklch(0.2 0.04 25) 100%);
+  --gradient-spotlight: radial-gradient(ellipse at top, oklch(0.62 0.24 25 / 0.35), transparent 60%);
+
+  /* Shadows */
+  --shadow-glow: 0 20px 60px -10px oklch(0.62 0.24 25 / 0.55);
+  --shadow-sun: 0 20px 60px -15px oklch(0.86 0.18 95 / 0.5);
+  --shadow-card: 0 12px 40px -12px oklch(0 0 0 / 0.6);
+
+  --glow-color: oklch(0.62 0.24 25 / 0.45);
+}
+
+.dark {
+  --background: oklch(0.14 0.02 30);
+  --foreground: oklch(0.98 0.01 90);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--gradient-night);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: 0.02em;
+  }
+}
+
+@layer utilities {
+  .bg-carnival { background: var(--gradient-carnival); }
+  .bg-night { background: var(--gradient-night); }
+  .bg-spotlight { background: var(--gradient-spotlight); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+  .shadow-sun { box-shadow: var(--shadow-sun); }
+  .shadow-card-elev { box-shadow: var(--shadow-card); }
+  .text-stroke {
+    -webkit-text-stroke: 2px var(--color-foreground);
+    color: transparent;
+  }
+  .text-gradient-carnival {
+    background: var(--gradient-carnival);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+}
+
+@font-face {
+  font-family: "Bebas Neue";
+  src: url("https://fonts.gstatic.com/s/bebasneue/v14/JTUSjIg69CK48gW7PXoo9Wlhyw.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Inter";
+  src: url("https://fonts.gstatic.com/s/inter/v18/UcCO3FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2") format("woff2");
+  font-weight: 100 900;
+  font-display: swap;
+}

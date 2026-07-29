@@ -1,0 +1,41 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0B0B0F;
+  --foreground: #F5F5F5;
+}
+
+body {
+  @apply bg-[#0B0B0F] text-white;
+}
+
+.container {
+  max-width: 1400px;
+}
+
+h1, h2, h3 {
+  letter-spacing: -0.02em;
+}
+
+.text-gradient-carnival {
+  background: linear-gradient(90deg, #EF4444, #FACC15);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.bg-spotlight {
+  background: radial-gradient(circle at center, rgba(239,68,68,0.25), transparent 70%);
+}
+
+.text-gradient{
+    background: linear-gradient(
+        90deg,
+        #ff3c41,
+        #ff6b00,
+        #ffd54a
+    );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
