@@ -26,7 +26,7 @@ export default function Home() {
 
           <h1 className="text-6xl md:text-8xl font-bold mt-4 leading-tight">
             Siente el <span className="text-carnival">ritmo</span> de{" "}
-            <span className="text-sun">Cadabatú</span>
+            <span className="text-gradient">Cadabatú</span>
           </h1>
 
           <p className="mt-6 max-w-2xl text-gray-300 text-lg">
